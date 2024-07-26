@@ -1,0 +1,35 @@
+
+# nome da aplicacao #
+
+# mesmo comando
+#spring.application.name=eurekaserver
+
+spring:
+  application:
+    name: eurekaserver
+
+server:
+  port: 8761
+  
+# um projeto pode ser servidor e cliente tb, porem quero que esse projeto seja apenas o servidor
+# com isso vou forcar em uma configuracao
+# Sometimes an application has nothing to offer and is only a caller of other services. 
+# Via configuration (eureka.client.register-with-eureka=false), you can tell it not to register 
+# itself as an instance.
+# Nesse exemplo, definimos a porta 8761 para o Eureka Server e desabilitamos o registro e 
+# a recuperacao do registro de outros servicos.
+
+# registerWithEureka controls whether or not this client registers itself and therefore 
+# becomes discoverable. This alone does not imply that this client is going to fetch 
+# the information on other services endpoints and therefore being able to connect to them.  
+eureka:
+  client:
+    register-with-eureka: false
+    # Fetch Registry
+    # Eureka clients fetches the registry information from the server and caches it locally. 
+    # After that, the clients use that information to find other services.
+    # Essas 2 propriedades indicam que o Eureka vai se comportar como um servidor.
+    # Indica que o servidor n vai buscar registros dos micro-servicos.
+    fetch-registry: false
+
+
